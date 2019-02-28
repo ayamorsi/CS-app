@@ -1,0 +1,48 @@
+<ion-header no-border>
+  <ion-navbar transparent>
+    <ion-title>
+      login
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content  class="back"  padding id="page1">
+
+  <form id="login-form1" [formGroup]= "formgroup"  (ngSubmit)="login(user)">
+    <ion-item class="input" id="login-input1">
+      <ion-label  style="color: blueviolet" floating >
+      Email
+      </ion-label>
+      <ion-input type="text"   formControlName="email"  [(ngModel)]="user.email" 
+      style="color: black" ></ion-input>
+    </ion-item>
+    <ion-item *ngIf="email.hasError('required') && email.touched" style="background-color: transparent">
+      <p> *email is required</p>
+      </ion-item>
+      <ion-item *ngIf="email.hasError('email')" style="background-color: transparent">
+        <p> *email is invalid </p>
+        </ion-item>
+    <br> <br> 
+    <ion-item  class="input" id="login-input2">
+      <ion-label  style="color:rgb(166, 68, 247)" floating>
+        Password
+      </ion-label >
+      <ion-input type="password" formControlName="password" [(ngModel)]="user.password" 
+      style="color: black" ></ion-input>
+    </ion-item>
+    <ion-item *ngIf="password.hasError('required') && password.touched" style="background-color: transparent">
+      <p> *password is required</p>
+      </ion-item> 
+      <ion-item *ngIf="password.hasError('pattern')" style="background-color: transparent">
+        <p> *please reenter your password </p>
+          
+        </ion-item>
+    <br> <br>
+    <button type="submit" class="button2"  id="login-button2" ion-button  round outline>
+      login
+    </button>
+  </form>
+
+<br>
+  
+</ion-content>

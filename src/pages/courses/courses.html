@@ -1,0 +1,37 @@
+<ion-header no-border>
+
+  <ion-navbar transparent>
+    <ion-title>courses</ion-title>
+  </ion-navbar > 
+
+</ion-header>
+
+
+<ion-content   class="back" padding>
+
+    <table id="subjects"  >
+
+        <tr >
+          <th>Code</th>
+          <th>Course name</th>
+          <th>credit hours</th>
+          <th>choose</th>
+
+        </tr>
+
+        <tr *ngFor="let entry of subjectarr" >
+            
+          <td>{{entry.val}}</td>
+          <td>{{entry.CreditHours}} </td>
+          <td>{{entry.Code}}</td>
+          <td>
+              <ion-checkbox slot="end"  item-right  [(ngModel)]="entry.isChecked"></ion-checkbox>
+              </td>
+ 
+        </tr>
+                                 </table> 
+
+<br> <br>
+<button ion-button (click)="Courses()" style="color: rgb(207, 32, 32)">Save</button>
+
+</ion-content>

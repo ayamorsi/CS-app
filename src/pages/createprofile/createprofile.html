@@ -1,0 +1,55 @@
+<ion-header no-border>
+
+  <ion-navbar transparent>
+    <ion-title>Createprofile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content   class="back" padding>
+<form [formGroup]= "formgroup" class="form">
+    <ion-item class="input1" >
+        <ion-label style="color:rgb(61, 140, 243)" floating>Full Name</ion-label>
+        <ion-input style="color: black"  formControlName="fullname"  [(ngModel)]="profile.fullName"></ion-input>
+      </ion-item>  
+      <ion-item *ngIf="fullname.hasError('required') && fullname.touched" style="background-color: transparent">
+      <p> *fullName is required</p>
+      </ion-item>
+      <ion-item *ngIf="fullname.hasError('pattern') " style="background-color: transparent">
+        <p> *fullName is At least 10 characters in length  </p>
+        </ion-item>
+  
+      <ion-item class="input2" >
+        <ion-label style="color:rgb(61, 140, 243)" floating>Level</ion-label>
+        <ion-input  type="number" style="color: black" maxlength="1"  formControlName="level" [(ngModel)]="profile.level"   ></ion-input>
+      </ion-item> 
+
+      <ion-item *ngIf="level.hasError('required') && level.touched" style="background-color: transparent">
+        <p> *level is required</p>
+        </ion-item>
+  
+            <ion-item class="input3">
+                <ion-label style="color:rgb(61, 140, 243)" >Gender</ion-label>
+                <ion-select style="color: black" formControlName="gender" [(ngModel)]="profile.gender" >
+                  <ion-option value="f">Female</ion-option>
+                  <ion-option value="m">Male</ion-option>
+                </ion-select>
+              </ion-item>
+              <ion-item *ngIf="gender.hasError('required') && gender.touched" style="background-color: transparent">
+                <p> *gender is required</p>
+                </ion-item>
+
+            </form>
+  <br> <br>
+      
+
+         
+        <button ion-button  (click)="createprofile()" >
+          <ion-icon name="color-wand"></ion-icon>
+          createprofile
+        </button>
+        
+     
+
+</ion-content>

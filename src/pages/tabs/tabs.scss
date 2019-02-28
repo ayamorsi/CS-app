@@ -1,0 +1,43 @@
+page-tabs {
+
+    .tabs-md .tab-button[aria-selected=true] {
+        background-color: rgba(0, 0, 0, 0.322);
+    }
+    .tabs-md .tab-button { 
+        background-color: rgba(0, 0, 0, 0.322);
+    }
+    .tabs-md[tabsLayout=icon-top] .has-icon .tab-button-text{
+        color: black;
+    }
+    
+    .ion-md-contact:before {
+        color: black;
+    }
+    .ion-md-book:before{
+        color: black;
+    }
+    .ion-md-calendar:before{
+        color: black;
+
+    }
+    .ion-md-paper:before{
+        color: black;
+
+    }
+    .ion-ios-contact:before{
+        color: black;
+    }
+    .ion-ios-book:before{
+        color: black;
+    }
+    .ion-ios-calendar:before{
+        color: black;
+
+    }
+    .ion-ios-paper:before{
+        color: black;
+    }
+    .tabs-ios .tab-button{
+        background-color: rgba(0, 0, 0, 0.322);
+    }
+}

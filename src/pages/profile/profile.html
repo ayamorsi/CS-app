@@ -1,0 +1,29 @@
+<ion-header no-border>
+
+  <ion-navbar transparent>
+    <ion-title>profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="back" padding>
+
+  <img class="image" src="assets/imgs/Zag.jpg"> 
+
+
+    
+    <!-- <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" /> -->
+    <button   (click)="selectPhoto()" ion-button >
+      </button>
+      
+
+
+<p style="color:rgb(92, 16, 136);"> Fullname: {{ (profileData | async)?.fullName }} </p>
+<p style="color:rgb(92, 16, 136);"> Gender: {{ (profileData | async)?.gender }} </p>
+<p style="color:rgb(92, 16, 136);"> Level: {{ (profileData | async)?.level }} </p>
+
+
+
+</ion-content>
+

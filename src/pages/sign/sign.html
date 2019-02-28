@@ -1,0 +1,44 @@
+
+<ion-header no-border>
+  <ion-navbar transparent>
+    <ion-title>Register</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content  class="back" padding> 
+<form (ngSubmit)="Register(user)" [formGroup]= "formgroup" >
+  <ion-item class="input" >
+      <ion-label   style="color:rgb(61, 140, 243)" floating>Email</ion-label>
+      <ion-input style="color: black"  type="email" formControlName="email" [(ngModel)]="user.email"></ion-input>
+    </ion-item> 
+    <ion-item *ngIf="email.hasError('required') && email.touched" style="background-color: transparent">
+      <p> *email is required</p>
+      </ion-item>
+      <ion-item *ngIf="email.hasError('email')" style="background-color: transparent">
+          <p> *email is invalid </p>
+          </ion-item>
+
+    <ion-item  class="input">
+        <ion-label  style="color:rgb(61, 140, 243)" floating>
+          Password
+        </ion-label >
+        <ion-input type="password"  formControlName="password" style="color: black" [(ngModel)]="user.password" ></ion-input>
+      </ion-item>
+      <ion-item *ngIf="password.hasError('required') && password.touched" style="background-color: transparent">
+        <p> *password is required</p>
+        </ion-item> 
+        <ion-item *ngIf="password.hasError('pattern')" style="background-color: transparent">
+          <p> *password is 
+              At least 8 characters in length</p>
+              <p>  Lowercase letters</p>
+                  <p> Uppercase letters</p>
+                      <p> Numbers</p>
+                          <p>Special characters</p>
+          </ion-item>
+      <br> <br>
+      <button  class="button1" type="submit" id="button1" ion-button  round outline [disabled]="formgroup.invalid">
+        Register
+      </button> 
+ </form> 
+</ion-content>
+<!--[ngModelOptions]="{standalone: true}" required password-->
+<!--[ngModelOptions]="{standalone: true}" required email-->
