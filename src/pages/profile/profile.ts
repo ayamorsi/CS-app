@@ -83,21 +83,21 @@ export class ProfilePage {
   
   }
   
-  upload(event){
-    const id= Math.random().toString(36).substring(2);
-    this.ref= this.afStorage.ref(id);
-    this.task= this.ref.put(event.target.files[0]);
-    this.downloadURL= this.task.getDownloadURL()
-    this.downloadURL.subscribe(url =>{
-      if (url){
-        this.imageURL = url
+  // upload(event){
+  //   const id= Math.random().toString(36).substring(2);
+  //   this.ref= this.afStorage.ref(id);
+  //   this.task= this.ref.put(event.target.files[0]);
+  //   this.downloadURL= this.task.getDownloadURL()
+  //   this.downloadURL.subscribe(url =>{
+  //     if (url){
+  //       this.imageURL = url
         
-      }
-      console.log(this.imageURL)
-    })
+  //     }
+  //     console.log(this.imageURL)
+  //   })
     
     
-  }
+  // }
 
 
 }
