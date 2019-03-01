@@ -7,6 +7,9 @@ import { TimetablePage} from '../timetable/timetable';
 import firebase from '../../../node_modules/firebase';
 import { Observable } from 'rxjs';
 import { AngularFireObject , AngularFireList} from  'angularfire2/database';
+import { FileChooser} from '@ionic-native/file-chooser';
+import { File } from '@ionic-native/file';
+import { buffer } from 'rxjs/operator/buffer';
 
 
 @IonicPage()
@@ -25,7 +28,9 @@ export class GradesPage implements OnInit {
     public navCtrl: NavController,
     public navParams: NavParams ,
     private afAuth : AngularFireAuth ,
-    private afDatabase:AngularFireDatabase
+    private afDatabase:AngularFireDatabase,
+    private filechooser:FileChooser,
+    private file : File
   ) {
     if (!firebase.apps.length) {
       firebase.initializeApp({});
@@ -62,5 +67,35 @@ export class GradesPage implements OnInit {
         this.afDatabase.list(`courses/${auth.uid}`).push(this.selectedArray)
         .then(()=> this.navCtrl.push(TimetablePage))
          })
+  }
+
+  choose(){
+    this.filechooser.open().then((uri) =>{
+      alert(uri);
+
+      this.file.resolveLocalFilesystemUrl(uri).then((newUrl)=>{
+        alert(JSON.stringify(newUrl));
+
+        let dirpath = newUrl.nativeURL;
+        let dirpathsegments = dirpath.split('/')
+        dirpathsegments.pop()
+        dirpath = dirpathsegments.join('/')
+
+        this.file.readAsArrayBuffer(dirpath,newUrl.name).then(async(buffer)=>{
+          await this.upload(buffer,newUrl.name);
+
+        })
+      })
+    })
+  }
+  async upload(buffer,name){
+    let blob = new Blob([buffer],{type: "image/jpeg"})
+    let storage = firebase.storage();
+
+    storage.ref('/images/' +name).put(blob).then((d)=>{
+      alert("Done");
+    }).catch((error)=>{
+      alert(JSON.stringify(error))
+    })
   }
 }
