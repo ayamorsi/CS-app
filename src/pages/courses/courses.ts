@@ -35,15 +35,24 @@ export class CoursesPage implements OnInit {
 
   ngOnInit(): void {
     this.subjectarr = [
-      { val: 'طرق رياضيه ',       CreditHours: '3' ,  Code:  '322ر', isChecked: false },
+
       { val: 'معادلات تفاضليه عاديه', CreditHours: '3' ,  Code:  '213ر', isChecked: false },
       { val: 'نظريه احصائيه',        CreditHours: '3' ,  Code:  'ر243', isChecked: false },
       { val: 'أساسيات برمجد هيكلية', CreditHours: '3' ,  Code:  'ر261', isChecked: false },
-      { val: 'نظريه الاعداد ',     CreditHours: '3' ,  Code:  '324ر', isChecked: false },
+      { val: 'نظريه الاعداد ',        CreditHours: '3' ,  Code:  '324ر', isChecked: false },
       { val: 'جبر خطى 1',            CreditHours: '3' ,  Code:  'ر212', isChecked: false },
       { val: 'تفاضل وتكامل 2',       CreditHours: '3' ,  Code:  '211ر', isChecked: false }, 
-      { val: 'شبكات حاسب 1',       CreditHours: '3' ,  Code:  'ر264', isChecked: false }, 
-      { val: 'برمجة شيئية',       CreditHours: '3' ,  Code:  'ر262', isChecked: false }, 
+      { val: 'شبكات حاسب 1',         CreditHours: '3' ,  Code:  'ر264', isChecked: false }, 
+      { val: 'برمجة شيئية',          CreditHours: '3' ,  Code:  'ر262', isChecked: false }, 
+      { val: 'قواعد بيانات متقدمة ', CreditHours: '3' ,  Code:  '472ر', isChecked: false }, 
+      { val: 'ذكاء اصطناعى متقدم',  CreditHours: '3' ,  Code:  '474ر', isChecked: false }, 
+      { val: 'تحليل وتنظيم النظم ', CreditHours: '3' ,  Code:  '476ر', isChecked: false },
+      { val: 'اداره الشبكات',       CreditHours: '3' ,  Code:  '468ر', isChecked: false }, 
+      { val: 'الشبكات اللاسلكيه',    CreditHours: '3' ,  Code: '466ر', isChecked: false }, 
+      { val: 'المترجمات',           CreditHours: '3' ,  Code: '464ر', isChecked: false }, 
+      { val: 'الشبكات العصبيه',     CreditHours: '3' ,  Code: '462ر', isChecked: false },
+
+
     ];
     
     this.selectedArray = [];
