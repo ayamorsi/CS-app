@@ -3,6 +3,8 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { FileChooser } from '@ionic-native/file-chooser';
+import { File } from '@ionic-native/file';
 
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
@@ -22,6 +24,7 @@ import {AngularFireDatabaseModule} from  'angularfire2/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import{Camera} from '@ionic-native/camera'
 import { ReactiveFormsModule } from '@angular/forms';
+import {AngularFireStorageModule} from 'angularfire2/storage';
 
 
 
@@ -45,7 +48,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AngularFireModule.initializeApp(FIRBASE_cREDENTIALS),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireStorageModule
     
 
     
@@ -67,6 +71,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     StatusBar,
     SplashScreen , 
     Camera,
+    FileChooser,
+    File,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
