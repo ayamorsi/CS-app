@@ -15,8 +15,38 @@
 <p style="color:rgb(92, 16, 136);"> Fullname: {{ (profileData | async)?.fullName }} </p>
 <p style="color:rgb(92, 16, 136);"> Gender: {{ (profileData | async)?.gender }} </p>
 <p style="color:rgb(92, 16, 136);"> Level: {{ (profileData | async)?.level }} </p>
+    <img class="image" src="assets/imgs/profileIcon.png">
+    
+    <input type="file" (change)="upload($event)" accept=".png,.jpg"/>
+    
 
 
+      
+      <!-- <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" /> -->
+      <!--<button   (click)="selectPhoto()" ion-button >
+        </button>-->
+        <ion-card>
+        <ion-card-content>
+        <ion-list no-line>
+        <ion-item>
+            <p> Fullname:     {{ (profileData | async)?.fullName }} </p>
+
+        </ion-item>
+        <ion-item>
+            <p> Gender:  
+            {{ (profileData | async)?.gender }} </p>
+        </ion-item>
+        <ion-item>
+            <p> Level:   {{ (profileData | async)?.level }} </p>
+        </ion-item>
+        <ion-item>
+          <p> Semester :  spring </p>
+        </ion-item>
+        <ion-item>
+          <p> Academic Year : 2018-2019 </p>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
-

@@ -24,6 +24,7 @@ import {AngularFireDatabaseModule} from  'angularfire2/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import{Camera} from '@ionic-native/camera'
 import { ReactiveFormsModule } from '@angular/forms';
+import {AngularFireStorageModule} from 'angularfire2/storage';
 
 
 
@@ -47,7 +48,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AngularFireModule.initializeApp(FIRBASE_cREDENTIALS),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireStorageModule
     
 
     
