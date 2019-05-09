@@ -6,5 +6,7 @@
 
 </ion-header>
 <ion-content class="back"  padding>
-  <button ion-button black (clic)="choose()" > UpLoad a File </button>
+  <input type="file" [(ngModel)]="filePath" #ngFilePath="ngModel">
+  <button ion-button black (clic)="uploadFile()" > UpLoad a File </button>
     </ion-content>
+    
