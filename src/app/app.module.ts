@@ -25,6 +25,7 @@ import {AngularFireAuthModule} from 'angularfire2/auth';
 import{Camera} from '@ionic-native/camera'
 import { ReactiveFormsModule } from '@angular/forms';
 import {AngularFireStorageModule} from 'angularfire2/storage';
+import { UploadServiceProvider } from '../providers/upload-service/upload-service';
 
 
 
@@ -73,7 +74,8 @@ import {AngularFireStorageModule} from 'angularfire2/storage';
     Camera,
     FileChooser,
     File,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UploadServiceProvider
   ]
 })
 export class AppModule {}

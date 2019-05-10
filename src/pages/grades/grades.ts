@@ -3,8 +3,9 @@ import { IonicPage} from 'ionic-angular';
 import {AngularFireDatabase} from  'angularfire2/database';
 import firebase from '../../../node_modules/firebase';
 import { AngularFireStorage } from '../../../node_modules/angularfire2/storage';
-import { Base64 } from '@ionic-native/base64/ngx';
-
+import { UploadServiceProvider } from '../../providers/upload-service/upload-service';
+import { Upload } from '../../providers/upload-service/Upload';
+import * as _ from 'underscore';
 
 
 @IonicPage()
@@ -13,21 +14,28 @@ import { Base64 } from '@ionic-native/base64/ngx';
   templateUrl: 'grades.html',
 })
 export class GradesPage   {
-  filePath : any;
- constructor(private db: AngularFireDatabase,
-   private afStorage: AngularFireStorage ,
-   private base64: Base64 ,
-  ) {}
+  selectedFiles: FileList;
+  currentUpload: Upload;
 
- uploadFile() {
-   let storageRef = firebase.storage().ref();
-      this.base64.encodeFile(this.filePath).then((base64File: string) => {
-        console.log(base64File);
-      }, (err) => {
-        console.log(err);
-      });
-    //   storageRef.putString(filePath, 'base64').then(function(snapshot) {
-    //    console.log('Uploaded a base64 string!');
-    //  });
+ constructor(private upSvc: UploadServiceProvider) {}
+
+ detectFiles(event) {
+  this.selectedFiles = event.target.files;
 }
+
+uploadSingle() {
+let file = this.selectedFiles.item(0)
+this.currentUpload = new Upload(file);
+this.upSvc.pushUpload(this.currentUpload)
+}
+
+uploadMulti() {
+let files = this.selectedFiles
+let filesIndex = _.range(files.length)
+_.each(filesIndex, (idx) => {
+  this.currentUpload = new Upload(files[idx]);
+  this.upSvc.pushUpload(this.currentUpload)}
+)
+}
+
 }
