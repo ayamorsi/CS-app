@@ -19,8 +19,6 @@ export class ProfilePage {
   fullName: string;
   ref: AngularFireStorageReference;
   task: AngularFireUploadTask;
-  downloadURL: Observable<string>;
-  imageURL: string;
   loginAs: string;
  
   constructor (
@@ -30,30 +28,26 @@ export class ProfilePage {
     private toast :ToastController,
     private afAuth :AngularFireAuth,
   ) {
-      if (!firebase.apps.length)
-      {
-        firebase.initializeApp({});
-      }
+         
+    if (!firebase.apps.length) {
+      firebase.initializeApp({});
+   }
+
     }
+
     ionViewWillLoad() {
-      this.afAuth.authState.take(1).subscribe(data => {
-        if (data.email.substring(0, 2) == "DR") {
-          this.loginAs = "doctor";
-        }
-        else {
-          this.loginAs = "student";
-        }
-        if (data && data.email && data.uid)
-        {
+      this.afAuth.authState.take(1).subscribe(data =>{
+        if (data && data.email && data.uid){
           this.toast.create({
             message: ` Welcome to Cs_App, ${data.email}`,
             duration: 2000
           }).present(); 
-          this.profileData = this.afDatabase.object(`proffile/${data.uid}`).valueChanges();
-          console.log("ionViewWillLoad", this.profileData);
+
+        this.profileData = this.afDatabase.object(`profile/${data.uid}`).valueChanges();
+
+
         }
-        else
-        {
+        else{
           this.toast.create({
             message: ' could not find authentication details.',
             duration: 2000
@@ -61,14 +55,17 @@ export class ProfilePage {
         }
       })
     }
-    getDataFromFireBase() {
-      this.afAuth.authState.take(1).subscribe(data =>{
-        if (data && data.email && data.uid)
-        {
-          this.profileData = this.afDatabase.object(`courses/${data.uid}`).valueChanges();
-          this.profData = this.afDatabase.object(`courses/${data.uid}`);
-          console.log("getDataFromFireBase", this.profileData );
-        }
-      })
-    }
+    
+    
+getDataFromFireBase(){
+
+this.afAuth.authState.take(1).subscribe(data =>{
+  if (data && data.email && data.uid){
+  this.profileData = this.afDatabase.object(`courses/${data.uid}`).valueChanges();
+  this.profData = this.afDatabase.object(`courses/${data.uid}`);
+  }
+  
+})
+
+}
 }
