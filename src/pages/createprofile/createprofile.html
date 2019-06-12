@@ -19,32 +19,28 @@
       <ion-item *ngIf="fullname.hasError('pattern') " style="background-color: transparent">
         <p> *fullName is At least 10 characters in length  </p>
         </ion-item>
-  
-      <ion-item class="input2" >
-        <ion-label style="color:rgb(61, 140, 243)" floating>Level</ion-label>
-        <ion-input  type="number" style="color: black" maxlength="1"  formControlName="level" [(ngModel)]="profile.level"   ></ion-input>
-      </ion-item> 
-
-      <ion-item *ngIf="level.hasError('required') && level.touched" style="background-color: transparent">
-        <p> *level is required</p>
+      <div *ngIf="loginAs == 'student'">
+        <ion-item class="input2">
+          <ion-label style="color:rgb(61, 140, 243)" floating>Level</ion-label>
+          <ion-input  type="number" style="color: black" maxlength="1"  formControlName="level" [(ngModel)]="profile.level"   ></ion-input>
+        </ion-item> 
+        <ion-item *ngIf="level.hasError('required') && level.touched" style="background-color: transparent">
+          <p> *level is required</p>
         </ion-item>
-  
-            <ion-item class="input3">
-                <ion-label style="color:rgb(61, 140, 243)" >Gender</ion-label>
-                <ion-select style="color: black" formControlName="gender" [(ngModel)]="profile.gender" >
-                  <ion-option value="f">Female</ion-option>
-                  <ion-option value="m">Male</ion-option>
-                </ion-select>
-              </ion-item>
-              <ion-item *ngIf="gender.hasError('required') && gender.touched" style="background-color: transparent">
-                <p> *gender is required</p>
-                </ion-item>
+      </div>
 
-            </form>
-  <br> <br>
-      
-
-         
+      <ion-item class="input3">
+          <ion-label style="color:rgb(61, 140, 243)" >Gender</ion-label>
+          <ion-select style="color: black" formControlName="gender" [(ngModel)]="profile.gender" >
+            <ion-option value="f">Female</ion-option>
+            <ion-option value="m">Male</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item *ngIf="gender.hasError('required') && gender.touched" style="background-color: transparent">
+          <p> *gender is required</p>
+          </ion-item>
+      </form>
+    <br> <br> 
         <button ion-button  (click)="createprofile()" >
           <ion-icon name="color-wand"></ion-icon>
           createprofile

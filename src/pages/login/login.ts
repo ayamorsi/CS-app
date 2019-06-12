@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
-import {SignPage } from '../sign/sign';
 import { User } from '../../models/User';
 import {AngularFireAuth} from 'angularfire2/auth';
 import { CreateprofilePage } from '../createprofile/createprofile';
@@ -11,32 +10,32 @@ import { Observable } from 'rxjs';
 import {AngularFireDatabase , AngularFireObject , AngularFireList} from  'angularfire2/database';
 import { profile } from '../../models/profile';
 
-
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
-
 })
 export class LoginPage {
-  user = {} as User; 
+  user = {} as User;
   formgroup: FormGroup; 
   email: AbstractControl;
   password: AbstractControl;
-  profData: AngularFireObject<profile>
+  profData: AngularFireObject<profile>;
+  profileData: Observable<any>;
 
-  profileData: Observable<any>
-
-  constructor( private afAuth : AngularFireAuth , public navCtrl: NavController , private alertCtrl: AlertController,
-    private afDatabase:AngularFireDatabase, public formbuilder:FormBuilder, ) {
+  constructor (
+    private afAuth: AngularFireAuth,
+    public navCtrl: NavController,
+    private alertCtrl: AlertController,
+    private afDatabase:AngularFireDatabase,
+    public formbuilder:FormBuilder
+  ) {
       this.formgroup = formbuilder.group({
-         email: [
-           '', Validators.compose([
+         email: ['', Validators.compose([
             Validators.required, 
             Validators.email
            ])
          ],
-         password: [
-           '', Validators.compose([
+         password: ['', Validators.compose([
              Validators.required,
              Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'),
            ])
@@ -45,12 +44,12 @@ export class LoginPage {
        });
      this.email = this.formgroup.controls['email'];
      this.password = this.formgroup.controls['password'];
-   
    }
   
-  async login(user:User) 
+  async login() 
   {
-    if (this.user.email == null || this.user.password == null) {
+    if (this.user.email == '' || this.user.password == '')
+    {
       this.alertCtrl.create(
         {
           title: 'Please Enter Email and Password',
@@ -58,35 +57,29 @@ export class LoginPage {
           buttons: ['Dismiss']
         }
       ).present()
-  
     }
-    try {
-    const result = this.afAuth.auth.signInWithEmailAndPassword(user.email , user.password);
-if (result) {
-  this.navCtrl.push(CreateprofilePage)
-}
-
-this.afAuth.authState
-      .first()
-      .subscribe(data => {
-        if (data && data.email && data.uid) {
+    try
+    {
+      const result = this.afAuth.auth.signInWithEmailAndPassword(this.user.email ,this.user.password);
+      // if (result) {
+      //   this.navCtrl.push(CreateprofilePage)
+      // }
+      // if (user.email.substring(0, 2) == "DR"){
+      //   this.navCtrl.push(DoctorsPage)
+      // }
+      // else {
+      //   this.navCtrl.push(TabsPage)
+      // }
+      this.afAuth.authState.first().subscribe(user => {
+        if (user && user.email && user.uid) {
           this.navCtrl.push(TabsPage)
         } else {
           this.navCtrl.push(CreateprofilePage)
         }
       });
     }
-    
-
     catch (e) {
       console.error(e);
     }
- 
   }
-
-  
-
-
 }
-
-

@@ -6,11 +6,7 @@
 
 </ion-header>
 
-
 <ion-content class="back" padding>
-
-
-
 
 <!-- <p style="color:rgb(92, 16, 136);"> Fullname: {{ (profileData | async)?.fullName }} </p>
 <p style="color:rgb(92, 16, 136);"> Gender: {{ (profileData | async)?.gender }} </p>
@@ -28,15 +24,16 @@
         <ion-card>
         <ion-card-content>
         <ion-list no-line>
+          {{(profileData | async)}}
         <ion-item>
             <p> Fullname:     {{ (profileData | async)?.fullName }} </p>
 
         </ion-item>
         <ion-item>
-            <p> Gender:  
+            <p> Gender:
             {{ (profileData | async)?.gender }} </p>
         </ion-item>
-        <ion-item>
+        <ion-item *ngIf="loginAs == 'student'">
             <p> Level:   {{ (profileData | async)?.level }} </p>
         </ion-item>
         <ion-item>

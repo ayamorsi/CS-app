@@ -4,6 +4,7 @@ import { CoursesPage } from '../courses/courses';
 import { TimetablePage } from '../timetable/timetable';
 import { GradesPage } from '../grades/grades';
 import {ProfilePage} from '../profile/profile';
+import { AngularFireAuth } from '../../../node_modules/angularfire2/auth';
 
 @IonicPage()
 @Component({
@@ -16,14 +17,25 @@ export class TabsPage {
   tab2Root = CoursesPage;
   tab3Root = TimetablePage;
   tab4Root = GradesPage;
+  loginAs: string;
 
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private afAuth : AngularFireAuth,
+  ) {
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TabsPage');
+  ionViewWillLoad() {
+    this.afAuth.authState.take(1).subscribe(data => {
+      if (data.email.substring(0, 2) == "DR") {
+        this.loginAs = "doctor";
+      }
+      else {
+        this.loginAs = "student";
+      }
+    })
   }
 
 }

@@ -7,13 +7,12 @@
 </ion-header>
 
 <ion-content  class="back"  padding id="page1">
-
-  <form id="login-form1" [formGroup]= "formgroup"  (ngSubmit)="login(user)">
+  <form name="login-form" id="login-form1" [formGroup]= "formgroup"  (ngSubmit)="login()">
     <ion-item class="input" id="login-input1">
       <ion-label  style="color: blueviolet" floating >
       Email
       </ion-label>
-      <ion-input type="text"   formControlName="email"  [(ngModel)]="user.email" 
+      <ion-input type="text"  formControlName="email"  [(ngModel)]="user.email" 
       style="color: black" ></ion-input>
     </ion-item>
     <ion-item *ngIf="email.hasError('required') && email.touched" style="background-color: transparent">
@@ -44,5 +43,4 @@
   </form>
 
 <br>
-  
 </ion-content>

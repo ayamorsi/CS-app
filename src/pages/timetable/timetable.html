@@ -8,12 +8,11 @@
 </ion-header>
 
 
-<ion-content class="back"  padding>
+<ion-content class="back"  *ngIf="loginAs == student" padding>
   <div class="container">
     <div class="row">
       <div class="col-12">
         <div class="row day-columns">
-          
           <div class="day-column">
             <div class="day-header">Sunday</div>
             <div class="day-content">
@@ -45,7 +44,6 @@
             </div>
             <div class="day-footer">3 Tasks</div>
           </div> 
-<!------------------------------------------------------------------------------------------------------>
 
           <div class="day-column">
             <div class="day-header">Tuesday</div>
@@ -70,7 +68,7 @@
             </div>
             <div class="day-footer">3 Tasks</div>
           </div> 
-<!---------------------------------------------------------------------->
+
 <div class="day-column">
   <div class="day-header">Wednesday</div>
   <div class="day-content">
@@ -137,4 +135,5 @@
       </div>
     </div> 
   </div>
+</ion-content>
 

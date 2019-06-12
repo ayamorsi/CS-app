@@ -8,31 +8,21 @@
 
 
 <ion-content   class="back" padding>
-
-    <table id="subjects"  >
-
-        <tr >
-         <th>Course name</th>
-         <th>credit hours</th>
-          <th>Code</th>
-          <th>choose</th>
-
-        </tr>
-
-        <tr *ngFor="let entry of subjectarr" >
-            
-          <td>{{entry.val}}</td>
-          <td>{{entry.CreditHours}} </td>
-          <td>{{entry.Code}}</td>
-          <td>
-              <ion-checkbox slot="end"  item-right  [(ngModel)]="entry.isChecked"></ion-checkbox>
-              </td>
- 
-        </tr>
-                                 </table> 
-
-<br> <br>
-<button ion-button (click)="Courses()"  color="dark"  full round style="color:whitesmoke; display:block;
+  <table id="subjects"  >
+    <tr >
+      <th>Course name</th>
+      <th>credit hours</th>
+      <th>Code</th>
+      <th>choose</th>
+    </tr>
+    <tr *ngFor="let entry of subjectarr" >
+        <td>{{entry.val}}</td>
+        <td>{{entry.CreditHours}} </td>
+        <td>{{entry.Code}}</td>
+        <td><ion-checkbox slot="end"  item-right  [(ngModel)]="entry.isChecked"></ion-checkbox></td>
+    </tr>
+  </table> 
+  <br> <br>
+  <button ion-button (click)="Courses()"  color="dark"  full round style="color:whitesmoke; display:block;
 margin: 0 auto;"> Save </button>
-
 </ion-content>

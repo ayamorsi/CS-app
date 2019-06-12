@@ -6,10 +6,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import firebase from 'firebase';
 import{courses} from '../../models/courses'
 
-
-
-
-
 @IonicPage()
 @Component({
   selector: 'page-timetable',
@@ -18,9 +14,10 @@ import{courses} from '../../models/courses'
 export class TimetablePage {
   coursData: Observable<any>
   corfData: AngularFireObject<courses>
+  loginAs: string;
 
-
-  constructor(public navCtrl: NavController, 
+  constructor(
+    public navCtrl: NavController, 
     public navParams: NavParams ,
     private afDatabase:AngularFireDatabase,
     private toast :ToastController,
@@ -31,21 +28,22 @@ export class TimetablePage {
      }
   }
 
-  
-
 getDataFromFireBase(){
-
   this.afAuth.authState.take(1).subscribe(data =>{
     if (data && data.email && data.uid){
      this.afDatabase.object(`timetable/${data.uid}`).valueChanges();
     this.afDatabase.object(`timetable/${data.uid}`);
     }
-
   })
-  }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TimetablePage'); 
-
-  }
-
+}
+ionViewWillLoad() {
+  this.afAuth.authState.take(1).subscribe(data => {
+    if (data.email.substring(0, 2) == "DR") {
+      this.loginAs = "doctor";
+    }
+    else {
+      this.loginAs = "student";
+    }
+  })
+}
 }

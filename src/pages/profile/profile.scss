@@ -2,18 +2,14 @@ page-profile {
     .back {
        // background-color:transparent;
         background-image: url('../assets/imgs/back.png') !important;
-        
 }
 .toolbar-title-md {
     text-align: center;
     font-size: 25px;
     font-family: cursive ;
     color: rgb(8, 8, 8) !important;
-  } 
-
-  
- 
- .image{
+} 
+.image{
     margin: auto;
     height: 100px; 
     width: 100px; 
@@ -22,9 +18,7 @@ page-profile {
    box-shadow: 0 0 5px gray;
    display: block;
    background-color: transparent;
-   
  }
-
  ion-card.card{
      box-shadow: none;
      background: rgba(0,0,0,0.5);

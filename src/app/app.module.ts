@@ -15,9 +15,6 @@ import { TimetablePage } from '../pages/timetable/timetable';
 import { GradesPage } from '../pages/grades/grades';
 import { TabsPage } from '../pages/tabs/tabs';
 import { CreateprofilePage } from '../pages/createprofile/createprofile';
-
-//import { FileTransfer } from '@ionic-native/file-transfer';
-//import { File } from '@ionic-native/file';
 import{ AngularFireModule} from 'angularfire2';
 import {FIRBASE_cREDENTIALS} from './firbase.credentials'
 import {AngularFireDatabaseModule} from  'angularfire2/database';
@@ -26,9 +23,8 @@ import{Camera} from '@ionic-native/camera'
 import { ReactiveFormsModule } from '@angular/forms';
 import {AngularFireStorageModule} from 'angularfire2/storage';
 import { UploadServiceProvider } from '../providers/upload-service/upload-service';
-
-
-
+import { DoctorsPage } from '../pages/doctors/doctors';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 @NgModule({
   declarations: [
@@ -41,6 +37,7 @@ import { UploadServiceProvider } from '../providers/upload-service/upload-servic
     GradesPage,
     TabsPage,
     CreateprofilePage,
+    DoctorsPage
     
   ],
   imports: [
@@ -50,7 +47,8 @@ import { UploadServiceProvider } from '../providers/upload-service/upload-servic
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     ReactiveFormsModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    AngularFirestoreModule
     
 
     
@@ -67,6 +65,7 @@ import { UploadServiceProvider } from '../providers/upload-service/upload-servic
     GradesPage,
     TabsPage,
     CreateprofilePage,
+    DoctorsPage
   ],
   providers: [
     StatusBar,
