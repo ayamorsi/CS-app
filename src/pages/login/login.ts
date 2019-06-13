@@ -1,16 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
-import {SignPage } from '../sign/sign';
 import { User } from '../../models/User';
 import {AngularFireAuth} from 'angularfire2/auth';
 import { CreateprofilePage } from '../createprofile/createprofile';
 import { FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
 import { TabsPage } from '../tabs/tabs';
 import { Observable } from 'rxjs';
-import {AngularFireDatabase , AngularFireObject , AngularFireList} from  'angularfire2/database';
+import {AngularFireDatabase , AngularFireObject} from  'angularfire2/database';
 import { profile } from '../../models/profile';
-
 
 @Component({
   selector: 'page-login',
@@ -27,7 +25,7 @@ export class LoginPage {
   profileData: Observable<any>
 
   constructor( private afAuth : AngularFireAuth , public navCtrl: NavController , private alertCtrl: AlertController,
-    private afDatabase:AngularFireDatabase, public formbuilder:FormBuilder, ) {
+    public formbuilder:FormBuilder, ) {
       this.formgroup = formbuilder.group({
          email: [
            '', Validators.compose([
@@ -61,7 +59,6 @@ export class LoginPage {
   
     }
     try {
-    const result = this.afAuth.auth.signInWithEmailAndPassword(user.email , user.password);
 /*if (result) {
   this.navCtrl.push(CreateprofilePage)
 }*/
@@ -84,7 +81,7 @@ this.afAuth.authState
  
   }
 
-  
+
 
 
 }
