@@ -5,7 +5,8 @@ import { profile } from '../../models/profile';
 import {TabsPage} from '../tabs/tabs';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {FormBuilder , FormGroup , Validators , AbstractControl} from '@angular/forms';
-// import { auth } from 'firebase';
+import { User } from '../../models/User';
+import { DoctorsPage } from '../doctors/doctors';
 
 @IonicPage()
 @Component({
@@ -13,37 +14,56 @@ import {FormBuilder , FormGroup , Validators , AbstractControl} from '@angular/f
   templateUrl: 'createprofile.html',
 })
 export class CreateprofilePage {
+  user = {} as User;
+  profile = {} as profile;
+  formgroup: FormGroup;
+  fullname: AbstractControl;
+  level: AbstractControl;
+  gender: AbstractControl;
+  toast: any;
+  profileData: any;
 
-profile = {} as profile;
-formgroup: FormGroup;
-fullname: AbstractControl;
-level: AbstractControl;
-gender: AbstractControl;
-
-constructor( private afAuth : AngularFireAuth ,private afDatabase:AngularFireDatabase, 
-  public navCtrl: NavController, public navParams: NavParams,
-  public formbuilder:FormBuilder) {
-   this.formgroup = formbuilder.group({
-        fullname:['',Validators.compose([
-          Validators.required,
+constructor(
+  private afAuth : AngularFireAuth,
+  private afDatabase:AngularFireDatabase, 
+  public navCtrl: NavController,
+  public navParams: NavParams,
+  public formbuilder:FormBuilder
+) {
+    this.formgroup = formbuilder.group({
+      fullname:['',Validators.compose([
+        Validators.required,
         Validators.pattern('[a-zA-Z ].{10,15}$'),
-        ]
-        )], //compose([Validators.maxLength(15), Validators.pattern('[a-zA-Z ]*'), Validators.required])],
-        level:['',Validators.required],
-        gender:['',Validators.required],
-      });
+        ])],
+      level:['',Validators.required],
+      gender:['',Validators.required],
+    });
     this.fullname = this.formgroup.controls['fullname'];
     this.level = this.formgroup.controls['level'];
     this.gender = this.formgroup.controls['gender'];
   }
+  
+    createprofile(){
+      this.afAuth.authState.take(1).subscribe(auth =>{
+      this.afDatabase.object(`profile/${auth.uid}`).set(this.profile)
+      .then(()=>  this.navCtrl.setRoot(TabsPage))
+      
+        // if (this.user.email.substring(0, 2) == "DR"){
+        //        this.navCtrl.push(DoctorsPage)
+        //     }
+        //     else {
+        //       this.navCtrl.push(TabsPage)
+        //     }
+       })
+       }
 
-  createprofile(){
-    this.afAuth.authState.take(1).subscribe(auth =>{
-    this.afDatabase.object(`profile/${auth.uid}`).set(this.profile)
-    .then(()=> this.navCtrl.setRoot(TabsPage))
-    })
-  }
-}
+    }
+
+  
+  
+
+
+
 
 
 

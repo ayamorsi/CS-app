@@ -15,9 +15,6 @@ import { TimetablePage } from '../pages/timetable/timetable';
 import { GradesPage } from '../pages/grades/grades';
 import { TabsPage } from '../pages/tabs/tabs';
 import { CreateprofilePage } from '../pages/createprofile/createprofile';
-
-//import { FileTransfer } from '@ionic-native/file-transfer';
-//import { File } from '@ionic-native/file';
 import{ AngularFireModule} from 'angularfire2';
 import {FIRBASE_cREDENTIALS} from './firbase.credentials'
 import {AngularFireDatabaseModule} from  'angularfire2/database';
@@ -25,9 +22,11 @@ import {AngularFireAuthModule} from 'angularfire2/auth';
 import{Camera} from '@ionic-native/camera'
 import { ReactiveFormsModule } from '@angular/forms';
 import {AngularFireStorageModule} from 'angularfire2/storage';
-
-
-
+import { UploadServiceProvider } from '../providers/upload-service/upload-service';
+import { DoctorsPage } from '../pages/doctors/doctors';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { TimetableDocPage } from '../pages/timetable-doc/timetable-doc';
+import { UploadlecturesPage } from '../pages/uploadlectures/uploadlectures';
 
 @NgModule({
   declarations: [
@@ -40,6 +39,9 @@ import {AngularFireStorageModule} from 'angularfire2/storage';
     GradesPage,
     TabsPage,
     CreateprofilePage,
+    DoctorsPage,
+    TimetableDocPage,
+    UploadlecturesPage
     
   ],
   imports: [
@@ -49,7 +51,8 @@ import {AngularFireStorageModule} from 'angularfire2/storage';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     ReactiveFormsModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    AngularFirestoreModule
     
 
     
@@ -66,6 +69,10 @@ import {AngularFireStorageModule} from 'angularfire2/storage';
     GradesPage,
     TabsPage,
     CreateprofilePage,
+    DoctorsPage,
+   TimetableDocPage,
+   UploadlecturesPage
+
   ],
   providers: [
     StatusBar,
@@ -73,7 +80,8 @@ import {AngularFireStorageModule} from 'angularfire2/storage';
     Camera,
     FileChooser,
     File,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UploadServiceProvider
   ]
 })
 export class AppModule {}

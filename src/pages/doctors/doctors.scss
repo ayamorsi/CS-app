@@ -1,4 +1,4 @@
-page-profile {
+page-doctors {
     .back {
         // background-color:transparent;
          background-image: url('../assets/imgs/back.png') !important;
@@ -47,4 +47,26 @@ page-profile {
       text-align: center;
       font-weight: 900;
   }
+  .button{
+    color: whitesmoke;
+    border: none; 
+    font-size: 14px;
+    font-family:cursive ;
+    display:block;
+    margin: 0 auto;
+    background-color: black;
+  }
+  .ion-md-paper:before {
+    content: "\f33f";
+    margin-left: 10px;
+    margin-right: 10px;
+    size: ledger;
 }
+.ion-md-calendar:before {
+    content: "\f2ab";
+    margin-left: 10px;
+    margin-right: 10px;
+    size: ledger;
+}
+ }
+

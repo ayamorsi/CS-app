@@ -57,12 +57,7 @@ export class CoursesPage implements OnInit {
     
     this.selectedArray = [];
   }
-  
-  
-
-
   Courses(){
-
     for(let i = 0; i < this.subjectarr.length; ++ i){
        if (this.subjectarr[i].isChecked == true){
         if (this.selectedArray.length > 5)
