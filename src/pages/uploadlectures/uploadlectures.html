@@ -1,0 +1,44 @@
+<ion-header no-border>
+
+  <ion-navbar  transparent>
+    <ion-title>uploadlectures</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="back" padding>
+
+    <div *ngIf="currentUpload">
+        <div class="progress">
+          <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': currentUpload?.progress + '%' }"></div>
+        </div>
+        Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
+      </div>
+      
+          <input id="uploadFile" class="f-input" />
+           <div class="fileUpload btn btn--browse">
+             <span>Browse</span>
+              <input id="uploadBtn" type="file" (change)="detectFiles($event)" class="upload" />
+           </div>
+
+          <button ion-button round
+                  [disabled]="!selectedFiles"
+                  (click)="uploadSingle()">
+      
+            Upload Single
+          </button>
+      <br>
+
+          <input id="uploadFile" class="f-input" />
+            <div class="fileUpload btn btn--browse">
+              <span>Browse</span>
+                <input id="uploadBtn" type="file" (change)="detectFiles($event)" class="upload" multiple />
+            </div>
+      
+            <button ion-button round 
+                    [disabled]="!selectedFiles"
+                    (click)="uploadMulti()">
+      
+              Upload Multiple
+            </button>
+</ion-content>

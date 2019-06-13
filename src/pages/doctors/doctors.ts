@@ -8,6 +8,7 @@ import firebase from '../../../node_modules/firebase';
 import { profile } from '../../models/profile';
 import { User } from '../../models/User';
 import { TimetableDocPage } from '../timetable-doc/timetable-doc';
+import { UploadlecturesPage } from '../uploadlectures/uploadlectures';
 
 @IonicPage()
 @Component({
@@ -55,5 +56,8 @@ export class DoctorsPage {
     timeTable(){
   this.navCtrl.setRoot(TimetableDocPage);
     }
-
+uploadLec()
+{
+  this.navCtrl.setRoot(UploadlecturesPage);
+}
 }

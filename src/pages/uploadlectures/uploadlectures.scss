@@ -1,0 +1,68 @@
+page-uploadlectures {
+    .back {
+        //background-color:transparent;
+        background-image: url('../assets/imgs/back.png') !important;
+        
+}
+.toolbar-title-md {
+    text-align: center;
+    font-size: 25px;
+    font-family: cursive ;
+    color: rgb(8, 8, 8) !important;
+  } 
+
+progress::-webkit-progress-value {
+    transition: width 0.1s ease;
+}
+.button{
+    color: whitesmoke;
+    border: none; 
+    font-size: 14px;
+    font-family:cursive ;
+    display:block;
+    margin: 0 auto;
+    background-color: black;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  .fileUpload {
+    position: relative;
+    overflow: hidden;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.btn--browse{
+    border: 1px solid gray;
+    border-left: 0;
+	border-radius: 0 2px 2px 0;
+    background-color: #ccc;
+    color: black;
+    height: 42px;
+    padding: 10px 14px;
+    margin-top: 50px;
+}
+
+.f-input{
+	height: 42px;
+	background-color: white;
+	border: 1px solid gray;
+	width: 50%;
+	max-width: 400px;
+	float: left;
+    padding: 0 14px;
+    margin-top: 50px;
+}
+
+
+}
+

@@ -26,6 +26,7 @@ import { UploadServiceProvider } from '../providers/upload-service/upload-servic
 import { DoctorsPage } from '../pages/doctors/doctors';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { TimetableDocPage } from '../pages/timetable-doc/timetable-doc';
+import { UploadlecturesPage } from '../pages/uploadlectures/uploadlectures';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { TimetableDocPage } from '../pages/timetable-doc/timetable-doc';
     TabsPage,
     CreateprofilePage,
     DoctorsPage,
-    TimetableDocPage
+    TimetableDocPage,
+    UploadlecturesPage
     
   ],
   imports: [
@@ -68,7 +70,8 @@ import { TimetableDocPage } from '../pages/timetable-doc/timetable-doc';
     TabsPage,
     CreateprofilePage,
     DoctorsPage,
-   TimetableDocPage 
+   TimetableDocPage,
+   UploadlecturesPage
 
   ],
   providers: [
