@@ -38,26 +38,44 @@ export class DoctorsPage {
  }
 
   }
-
- 
-  
-  getDataFromFireBase(){
-
+  ionViewWillLoad() {
     this.afAuth.authState.take(1).subscribe(data =>{
       if (data && data.email && data.uid){
-      this.profileData = this.afDatabase.object(`courses/${data.uid}`).valueChanges();
-      this.profData = this.afDatabase.object(`courses/${data.uid}`);
+        this.toast.create({
+          message: ` Welcome to Cs_App, ${data.email}`,
+          duration: 2000
+        }).present(); 
+
+      this.profileData = this.afDatabase.object(`profile/${data.uid}`).valueChanges();
+
+
       }
-      
+      else{
+        this.toast.create({
+          message: ' could not find authentication details.',
+          duration: 2000
+        }).present();
+      }
     })
-    
-    }
+  }
+  
+  
+getDataFromFireBase(){
+
+this.afAuth.authState.take(1).subscribe(data =>{
+if (data && data.email && data.uid){
+this.profileData = this.afDatabase.object(`courses/${data.uid}`).valueChanges();
+this.profData = this.afDatabase.object(`courses/${data.uid}`);
+}
+
+})
+}
 
     timeTable(){
-  this.navCtrl.setRoot(TimetableDocPage);
+  this.navCtrl.push(TimetableDocPage);
     }
 uploadLec()
 {
-  this.navCtrl.setRoot(UploadlecturesPage);
+  this.navCtrl.push(UploadlecturesPage);
 }
 }

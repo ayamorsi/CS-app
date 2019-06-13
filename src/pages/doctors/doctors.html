@@ -9,27 +9,26 @@
 
 <ion-content class="back" padding>
       
-    <ion-card>
-        <ion-card-content>
-        <ion-list no-line>
-        <ion-item>
-            <p> Fullname:    
-               {{ (profileData | async)?.fullName }} </p>
-    
-        </ion-item>
-        <ion-item>
-            <p> Gender:  
-            {{ (profileData | async)?.gender }} </p>
-        </ion-item>
-        <ion-item>
-          <p> Semester :  spring </p>
-        </ion-item>
-        <ion-item>
-          <p> Academic Year : 2018-2019 </p>
-        </ion-item>
-      </ion-list>
-    </ion-card-content>
-    </ion-card>
+  <ion-card>
+    <ion-card-content>
+    <ion-list no-line>
+    <ion-item>
+        <p> Fullname:     {{ (profileData | async)?.fullName }} </p>
+
+    </ion-item>
+    <ion-item>
+        <p> Gender:  
+        {{ (profileData | async)?.gender }} </p>
+    </ion-item>
+    <ion-item>
+      <p> Semester :  spring </p>
+    </ion-item>
+    <ion-item>
+      <p> Academic Year : 2018-2019 </p>
+    </ion-item>
+  </ion-list>
+</ion-card-content>
+</ion-card>
     
     <button ion-button   round  (click)="uploadLec()" >
     <ion-icon start name="paper"></ion-icon>

@@ -72,7 +72,7 @@ export class LoginPage {
         this.navCtrl.push(TabsPage)
       }
     
-     }
+      }
     catch (e) {
       console.error(e);
     }

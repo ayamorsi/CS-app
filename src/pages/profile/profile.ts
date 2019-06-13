@@ -20,7 +20,7 @@ export class ProfilePage {
   fullName: string;
   ref: AngularFireStorageReference;
   task: AngularFireUploadTask;
-  loginAs: string;
+  
  
   constructor (
     public navCtrl: NavController, 
@@ -36,24 +36,15 @@ export class ProfilePage {
 
     }
 
-    // ionViewWillLoad
-    StudentDoctor() {
-      this.afAuth.authState.take(1).subscribe(user => {
-        if (user.email.substring(0, 2) == "DR") {
-          this.loginAs = "doctor";
-        }
-        else {
-          this.loginAs = "student";
-        }
-      })
-      this.afAuth.authState.take(1).subscribe(user =>{
-        if (user && user.email && user.uid){
+    ionViewWillLoad() {
+      this.afAuth.authState.take(1).subscribe(data =>{
+        if (data && data.email && data.uid){
           this.toast.create({
-            message: ` Welcome to Cs_App, ${user.email}`,
+            message: ` Welcome to Cs_App, ${data.email}`,
             duration: 2000
           }).present(); 
 
-        this.profileData = this.afDatabase.object(`profile/${user.uid}`).valueChanges();
+        this.profileData = this.afDatabase.object(`profile/${data.uid}`).valueChanges();
 
 
         }
@@ -76,6 +67,5 @@ this.afAuth.authState.take(1).subscribe(data =>{
   }
   
 })
-
 }
 }
