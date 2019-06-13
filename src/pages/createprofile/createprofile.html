@@ -19,15 +19,15 @@
       <ion-item *ngIf="fullname.hasError('pattern') " style="background-color: transparent">
         <p> *fullName is At least 10 characters in length  </p>
         </ion-item>
-      <div *ngIf="loginAs == 'student'">
-        <ion-item class="input2">
+      
+        <ion-item class="input2" *ngIf="loginAs == 'student'" >
           <ion-label style="color:rgb(61, 140, 243)" floating>Level</ion-label>
           <ion-input  type="number" style="color: black" maxlength="1"  formControlName="level" [(ngModel)]="profile.level"   ></ion-input>
         </ion-item> 
         <ion-item *ngIf="level.hasError('required') && level.touched" style="background-color: transparent">
           <p> *level is required</p>
         </ion-item>
-      </div>
+      
 
       <ion-item class="input3">
           <ion-label style="color:rgb(61, 140, 243)" >Gender</ion-label>

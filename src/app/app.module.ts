@@ -25,6 +25,7 @@ import {AngularFireStorageModule} from 'angularfire2/storage';
 import { UploadServiceProvider } from '../providers/upload-service/upload-service';
 import { DoctorsPage } from '../pages/doctors/doctors';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { TimetableDocPage } from '../pages/timetable-doc/timetable-doc';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     GradesPage,
     TabsPage,
     CreateprofilePage,
-    DoctorsPage
+    DoctorsPage,
+    TimetableDocPage
     
   ],
   imports: [
@@ -65,7 +67,9 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     GradesPage,
     TabsPage,
     CreateprofilePage,
-    DoctorsPage
+    DoctorsPage,
+   TimetableDocPage 
+
   ],
   providers: [
     StatusBar,

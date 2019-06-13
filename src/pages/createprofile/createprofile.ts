@@ -5,6 +5,8 @@ import { profile } from '../../models/profile';
 import {TabsPage} from '../tabs/tabs';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {FormBuilder , FormGroup , Validators , AbstractControl} from '@angular/forms';
+import { User } from '../../models/User';
+import { DoctorsPage } from '../doctors/doctors';
 
 @IonicPage()
 @Component({
@@ -12,14 +14,13 @@ import {FormBuilder , FormGroup , Validators , AbstractControl} from '@angular/f
   templateUrl: 'createprofile.html',
 })
 export class CreateprofilePage {
-
+  user = {} as User;
   profile = {} as profile;
   formgroup: FormGroup;
   fullname: AbstractControl;
   level: AbstractControl;
   gender: AbstractControl;
   toast: any;
-  loginAs: string;
   profileData: any;
 
 constructor(
@@ -41,38 +42,28 @@ constructor(
     this.level = this.formgroup.controls['level'];
     this.gender = this.formgroup.controls['gender'];
   }
-  ionViewWillLoad() {
-    this.afAuth.authState.take(1).subscribe(data => {
-      if (data.email.substring(0, 2) == "DR") {
-        this.loginAs = "doctor";
-      }
-      else {
-        this.loginAs = "student";
-      }
-      if (data && data.email && data.uid)
-      {
-        this.toast.create({
-          message: ` create your profile ya 7omar, ${data.email}`,
-          duration: 2000
-        }).present(); 
-        this.profileData = this.afDatabase.object(`proffile/${data.uid}`).valueChanges();
-      }
-      else
-      {
-        this.toast.create({
-          message: ' could not find authentication details.',
-          duration: 2000
-        }).present();
-      }
-    })
-  }
-  createprofile(){
-    this.afAuth.authState.take(1).subscribe(auth =>{
-    this.afDatabase.object(`profile/${auth.uid}`).set(this.profile)
-    .then(()=> this.navCtrl.setRoot(TabsPage))
-    })
-  }
-}
+  
+    createprofile(){
+      this.afAuth.authState.take(1).subscribe(auth =>{
+      this.afDatabase.object(`profile/${auth.uid}`).set(this.profile)
+      .then(()=>  this.navCtrl.setRoot(TabsPage))
+      
+        // if (this.user.email.substring(0, 2) == "DR"){
+        //        this.navCtrl.push(DoctorsPage)
+        //     }
+        //     else {
+        //       this.navCtrl.push(TabsPage)
+        //     }
+       })
+       }
+
+    }
+
+  
+  
+
+
+
 
 
 

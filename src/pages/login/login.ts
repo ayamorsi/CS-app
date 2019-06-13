@@ -9,6 +9,7 @@ import { TabsPage } from '../tabs/tabs';
 import { Observable } from 'rxjs';
 import {AngularFireDatabase , AngularFireObject , AngularFireList} from  'angularfire2/database';
 import { profile } from '../../models/profile';
+import { DoctorsPage } from '../doctors/doctors';
 
 @Component({
   selector: 'page-login',
@@ -64,22 +65,26 @@ export class LoginPage {
       // if (result) {
       //   this.navCtrl.push(CreateprofilePage)
       // }
-      // if (user.email.substring(0, 2) == "DR"){
-      //   this.navCtrl.push(DoctorsPage)
-      // }
-      // else {
-      //   this.navCtrl.push(TabsPage)
-      // }
-      this.afAuth.authState.first().subscribe(user => {
-        if (user && user.email && user.uid) {
-          this.navCtrl.push(TabsPage)
-        } else {
-          this.navCtrl.push(CreateprofilePage)
-        }
-      });
-    }
+      if (this.user.email.substring(0, 2) == "DR"){
+        this.navCtrl.push(DoctorsPage)
+      }
+      else {
+        this.navCtrl.push(TabsPage)
+      }
+    
+     }
     catch (e) {
       console.error(e);
     }
   }
 }
+
+
+
+//   this.afAuth.authState.first().subscribe(user => {
+    //     if (user && user.email && user.uid) {
+    //       this.navCtrl.push(TabsPage)
+    //     } else {
+    //       this.navCtrl.push(CreateprofilePage)
+    //     }
+    //   });

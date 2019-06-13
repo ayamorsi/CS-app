@@ -6,6 +6,7 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { Observable } from 'rxjs/Observable';
 import firebase from '../../../node_modules/firebase';
 import { profile } from '../../models/profile';
+import { User } from '../../models/User';
 
 @IonicPage()
 @Component({
@@ -13,7 +14,7 @@ import { profile } from '../../models/profile';
   templateUrl: 'profile.html',
 })
 export class ProfilePage {
-
+  user = {} as User;
   profData: AngularFireObject<profile>
   profileData: Observable<any>;
   fullName: string;
@@ -35,15 +36,24 @@ export class ProfilePage {
 
     }
 
-    ionViewWillLoad() {
-      this.afAuth.authState.take(1).subscribe(data =>{
-        if (data && data.email && data.uid){
+    // ionViewWillLoad
+    StudentDoctor() {
+      this.afAuth.authState.take(1).subscribe(user => {
+        if (user.email.substring(0, 2) == "DR") {
+          this.loginAs = "doctor";
+        }
+        else {
+          this.loginAs = "student";
+        }
+      })
+      this.afAuth.authState.take(1).subscribe(user =>{
+        if (user && user.email && user.uid){
           this.toast.create({
-            message: ` Welcome to Cs_App, ${data.email}`,
+            message: ` Welcome to Cs_App, ${user.email}`,
             duration: 2000
           }).present(); 
 
-        this.profileData = this.afDatabase.object(`profile/${data.uid}`).valueChanges();
+        this.profileData = this.afDatabase.object(`profile/${user.uid}`).valueChanges();
 
 
         }
