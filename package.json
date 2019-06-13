@@ -33,6 +33,7 @@
     "@ionic/storage": "2.2.0",
     "angularfire2": "^5.1.1",
     "com-badrit-base64": "0.2.0",
+    "cordova": "^7.1.0",
     "cordova-android": "7.1.4",
     "cordova-android-support-gradle-release": "^2.0.1",
     "cordova-ios": "4.5.5",
